@@ -1,4 +1,4 @@
-const form = document.querySelector(".form_js"),
+const nameForm = document.querySelector(".form_name"),
   nameInput = form.querySelector("input"),
   greeting = document.querySelector("h4");
 
@@ -16,15 +16,14 @@ function saveName(name){
 
 function inputName(event){
   event.preventDefault;
-  const newName = nameInput.value;
-  console.log(newName);
-  // sayHello(newName);
-  // saveName(newName);
+  const currentValue = nameInput.value;
+  sayHello(currentValue);
+  saveName(currentValue);
 }
 
 function askNewName(){
   nameInput.classList.remove(HIDE_Class);
-  form.addEventListener("submit", inputName)
+  nameForm.addEventListener("submit", inputName)
 }
 
 function loadName(){

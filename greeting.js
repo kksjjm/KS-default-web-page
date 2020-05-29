@@ -1,29 +1,25 @@
-const form = document.querySelector(".form_js"),
-  nameInput = form.querySelector("input"),
-  greeting = document.querySelector("h4");
+const nameInput = document.querySelector(".form_js input"),
+ greetingText = document.querySelector("h4");
 
 const HIDE_Class = "hide",
-const USER_ = "user_name";
-
-console.log(form);
+USER_Local = "user_name";
 
 function sayHello(name){
-  greeting.innerText = `Hello! ${name} you look great today :)`
-  greeting.classList.remove(HIDE_Class);
+  greetingText.innerText = `Hello! ${name} you look so great today!`;
+  greetingText.classList.remove(HIDE_Class);
 }
 
-function loadName(){
-  const userName = localStorage.getItem(USER_);
+function getUserName(){
+  const userName = localStorage.getItem(USER_Local);
   if(userName){
     sayHello(userName);
   }else{
-    
     nameInput.classList.remove(HIDE_Class);
   }
 }
 
 function init(){
-  loadName();
+  getUserName();
 }
 
 init();

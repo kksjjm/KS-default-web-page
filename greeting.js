@@ -1,5 +1,5 @@
 const nameForm = document.querySelector(".form_name"),
-  nameInput = form.querySelector("input"),
+  nameInput = nameForm.querySelector("input"),
   greeting = document.querySelector("h4");
 
 const HIDE_Class = "hide",
@@ -10,15 +10,11 @@ function sayHello(name){
   greeting.classList.remove(HIDE_Class);
 }
 
-function saveName(name){
-  localStorage.setItem(USER_LS, name);
-}
-
 function inputName(event){
   event.preventDefault;
   const currentValue = nameInput.value;
   sayHello(currentValue);
-  saveName(currentValue);
+  localStorage.setItem(USER_LS, name);
 }
 
 function askNewName(){

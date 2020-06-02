@@ -4,16 +4,15 @@ const todoForm = document.querySelector(".form_todo"),
 
 const TODO_LS = "todo_list";
 
-const todos = [];
+let todos = [];
 
 
 function deleteTodo(event){
-  console.log(event);
   event.target.parentElement.remove();
-  const parsedTD = JSON.parse(localStorage[TODO_LS]);
+  // const parsedTD = JSON.parse(localStorage[TODO_LS]);
   const id = event.target.parentElement.id;
-  parsedTD.splice(id, 1);
-  localStorage.setItem(TODO_LS, JSON.stringify(parsedTD))
+  todos.splice(id, 1);
+  localStorage.setItem(TODO_LS, JSON.stringify(todos))
 }
 
 function saveTodoList(todos){
@@ -22,11 +21,14 @@ function saveTodoList(todos){
 
 function addtodoList(value){
   const todo = document.createElement("li");
+
   const text = document.createElement("span");
   text.innerText = value; 
+
   const delBtn = document.createElement("button");
   delBtn.innerText = 'x'
   delBtn.addEventListener("click", deleteTodo)
+
   todo.appendChild(text);
   todo.appendChild(delBtn);
   todo.id = todoList.childElementCount;
@@ -36,7 +38,6 @@ function addtodoList(value){
     id: todoList.childElementCount-1
   }
   todos.push(todosObj);
-
   saveTodoList(todos);
 }
 
